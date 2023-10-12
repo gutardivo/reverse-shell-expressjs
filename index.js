@@ -2,7 +2,7 @@
 const express = require('express');
 const { exec } = require('child_process');
 const app = express();
-const port = 4444 | process.env.PORT;
+const port = Number(process.env.PORT || 5000);
 
 app.get('/', (req, res) => {
   try {
