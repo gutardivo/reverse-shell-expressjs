@@ -5,7 +5,12 @@ const app = express();
 const port = 4444 | process.env.PORT;
 
 app.get('/', (req, res) => {
-  res.send('Reverse Shell Server');
+  try {
+    res.status(200).json({"port": port})
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send("Server error");
+  }
 });
 
 app.get('/exec', (req, res) => {
